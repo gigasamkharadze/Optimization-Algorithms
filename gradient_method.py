@@ -4,9 +4,7 @@ import numpy as np
 def gradient_method_quadratic(A, b, x0, epsilon):
     '''
     The gradient descent method for minimizing a quadratic function
-    f(x) = 1/2*x^T*A*x + b^T*x
-    g(x) = A*x + b
-    
+
     A - positive definite matrix associated with the objective function
     b - vector associated with the linear part objective function
     x0 - initial point
