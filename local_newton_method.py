@@ -14,6 +14,8 @@ def local_newton_raphson(f, g, h, x0, epsilon):
     x - root
     k - number of iterations
     '''
+    print('Initial point:', type(x0))
+
     x = x0
     k = 0
     g_x = g(x)
@@ -21,7 +23,10 @@ def local_newton_raphson(f, g, h, x0, epsilon):
     h_x = h(x)
     while g_norm > epsilon:
         k += 1  
-        x = x - np.linalg.solve(h_x, g_x)
+        if type(x)  == int:
+            x = x - g_x/h_x
+        else:
+            x = x - np.linalg.solve(h_x, g_x)
         g_x = g(x)
         g_norm = np.linalg.norm(g_x)
         h_x = h(x)
@@ -45,4 +50,5 @@ def h(x):
 
 x0 = np.array([1, 1])
 epsilon = 1e-4
+
 x, k = local_newton_raphson(f, g, h, x0, epsilon)
